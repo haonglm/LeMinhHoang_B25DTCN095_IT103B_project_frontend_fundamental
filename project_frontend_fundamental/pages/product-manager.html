@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Tracker</title>
+    <link rel="stylesheet" href="../css/product-manager.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="icon"><img src="../assets/icons/📚.png" alt="logo"></div>
+            <div>
+                <h3>Study Tracker</h3>
+                <p>Quản lý tiến độ học tập</p>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li><span class="sidebar-icon"><img src="../assets/icons/Trending up.png" alt="logo"></span> Thống kê</li>
+            <li><span class="sidebar-icon"><img src="../assets/icons/Notebook.png" alt="logo"></span> Quản lý môn học</li>
+            <li><span class="sidebar-icon"><img src="../assets/icons/Document duplicate.png" alt="logo"></span> Quản lý bài học</li>
+        </ul>
+    </aside>
+
+    <main class="main">
+        
+        <div class="topbar">
+            <div class="left">
+                <div class="icon"><img src="../assets/icons/View grid.png" alt="logo"></div>
+            </div>
+            <div class="right">
+                <div class="icon"><img src="../assets/icons/Bell.png" alt="logo"></div>
+                <div class="icon"><img src="../assets/icons/Question mark circle.png" alt="logo"></div>
+                <div class="icon"><img src="../assets/icons/Cog settings.png" alt="logo"></div>
+                <div class="avatar"><img src="../assets/icons/Avatar w. photo.png" alt="logo"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="header">
+                <h2>Môn học</h2>
+
+                <div class="actions">
+                    <select>
+                        <option>Lọc theo trạng thái</option>
+                    </select>
+                    <button>Thêm mới môn học</button>
+                </div>
+            </div>
+
+            <div class="search">
+                <input type="text" class="input-icon" placeholder="Tìm kiếm môn học theo tên...">
+                
+            </div>
+
+            <div class="table">
+                <div class="table-head">
+                    <div>Tên môn học</div>
+                    <div>Trạng thái</div>
+                    <div>Chức năng</div>
+                </div>
+
+                <div class="row">
+                    <div>Lập trình C</div>
+                    <div><span class="status active">● Đang hoạt động</span></div>
+                    <div class="actions-icon">
+                        <span class="icon"><img src="../assets/icons/Button.png" alt="logo"></span>
+                        <span class="icon"><img src="../assets/icons/_Button base.png" alt="logo"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>Lập trình Frontend với ReactJS</div>
+                    <div><span class="status stop">● Ngừng hoạt động</span></div>
+                    <div class="actions-icon">
+                        <span class="icon"><img src="../assets/icons/Button.png" alt="logo"></span>
+                        <span class="icon"><img src="../assets/icons/_Button base.png" alt="logo"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>Lập trình Backend với Spring boot</div>
+                    <div><span class="status active">● Đang hoạt động</span></div>
+                    <div class="actions-icon">
+                        <span class="icon"><img src="../assets/icons/Button.png" alt="logo"></span>
+                        <span class="icon"><img src="../assets/icons/_Button base.png" alt="logo"></span>
+                    </div>
+                </div>
+
+            <div class="pagination">
+                <button>&lt;</button>
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>&gt;</button>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>
