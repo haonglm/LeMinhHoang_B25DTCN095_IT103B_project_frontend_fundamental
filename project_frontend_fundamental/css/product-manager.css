@@ -20,6 +20,14 @@ body {
     padding: 20px;
 }
 
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #0E73F6;
+}
+
 .logo {
     display: flex;
     gap: 10px;
@@ -106,6 +114,7 @@ body {
 
 .search {
     margin-bottom: 15px;
+    text-align: right;
 }
 
 .search input {
@@ -113,6 +122,10 @@ body {
     padding: 8px;
     border-radius: 6px;
     border: 1px solid #ccc;
+}
+
+.actions select {
+    padding-right: 59px;
 }
 
 .table {
