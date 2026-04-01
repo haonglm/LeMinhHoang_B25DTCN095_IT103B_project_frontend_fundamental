@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang môn học</title>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <div class="search-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M20 20L16.2223 16.2156M18.3158 11.1579C18.3158 13.0563 17.5617 14.8769 16.2193 16.2193C14.8769 17.5617 13.0563 18.3158 11.1579 18.3158C9.2595 18.3158 7.43886 17.5617 6.0965 16.2193C4.75413 14.8769 4 13.0563 4 11.1579C4 9.2595 4.75413 7.43886 6.0965 6.0965C7.43886 4.75413 9.2595 4 11.1579 4C13.0563 4 14.8769 4.75413 16.2193 6.0965C17.5617 7.43886 18.3158 9.2595 18.3158 11.1579V11.1579Z" stroke="#989898" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input type="text" placeholder="Tìm kiếm">
+        </div>
+    </div>
+
+    <div class="header-right">
+        <a href="#" class="active">Trang chủ</a>
+        <a href="./subject-manager.html">Môn học</a>
+        <a href="#">Bài học</a>
+
+        <div class="notification-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M11 7C8.239 7 6 9.216 6 11.95C6 14.157 6.875 19.395 15.488 24.69C15.6423 24.7839 15.8194 24.8335 16 24.8335C16.1806 24.8335 16.3577 24.7839 16.512 24.69C25.125 19.395 26 14.157 26 11.95C26 9.216 23.761 7 21 7C18.239 7 16 10 16 10C16 10 13.761 7 11 7Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M24 27V24.3333C24 22.9188 23.5224 21.5623 22.6722 20.5621C21.8221 19.5619 20.669 19 19.4667 19H11.5333C10.331 19 9.17795 19.5619 8.32778 20.5621C7.47762 21.5623 7 22.9188 7 24.3333V27M21 9.5C21 11.9853 18.9853 14 16.5 14C14.0147 14 12 11.9853 12 9.5C12 7.01472 14.0147 5 16.5 5C18.9853 5 21 7.01472 21 9.5Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+</header>
+
+<!-- FILTER -->
+<div class="tabs">
+    <span class="active underline-title">Tất cả môn học</span>
+    <span>Đã hoàn thành</span>
+    <span>Chưa hoàn thành</span>
+</div>
+
+<!-- CARD LIST -->
+<div class="container">
+
+    <div class="card">
+        <h3>HTML cơ bản</h3>
+        <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 01: Tổng quan về HTML</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 02: Thẻ Inline và Block</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 03: Thẻ hình ảnh</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 04: Thẻ chuyển trang</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 05: Thẻ Semantic</li>
+        </ul>
+        <p class="more">Xem thêm</p>
+    </div>
+
+    <div class="card">
+        <h3>CSS cơ bản</h3>
+        <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 01: Tổng quan về CSS</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 02: Nhúng CSS</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 03: Position</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 04: Flexbox</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 05: Animation</li>
+        </ul>
+        <p class="more">Xem thêm</p>
+    </div>
+
+    <div class="card">
+        <h3>JavaScript cơ bản</h3>
+        <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 01: Tổng quan</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 02: Khai báo biến</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 03: Câu lệnh điều kiện</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 04: Vòng lặp</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+<path d="M8.91593 14.0714L11.3085 17.5751L19.4837 11.9924" stroke="black" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M12.1628 23.8417C17.5901 24.8644 22.8189 21.2938 23.8417 15.8665C24.8644 10.4392 21.2938 5.21035 15.8664 4.18762C10.4391 3.1649 5.2103 6.73553 4.18758 12.1629C3.16485 17.5902 6.73549 22.819 12.1628 23.8417Z" stroke="black"/>
+</svg>Session 05: Mảng</li>
+        </ul>
+        <p class="more">Xem thêm</p>
+    </div>
+
+    <div class="card empty">
+        <h3>lập trình C</h3>
+        <p>Chưa có bài học nào</p>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div>
+            <p>Chúng tôi cung cấp giải pháp học tập, giúp học sinh và<br>sinh viên học tập tốt hơn và hiệu quả hơn.</p>
+        </div>
+
+        <div>
+            <h4>Danh mục</h4>
+            <p>Môn học</p>
+            <p>Bài học</p>
+            <p>Ghi chú</p>
+        </div>
+
+        <div>
+            <h4>Hỗ trợ khách hàng</h4>
+            <p>Tìm kiếm dịch vụ</p>
+            <p>Điều khoản sử dụng</p>
+            <p>Chính sách</p>
+        </div>
+    </div>
+
+    <div class="footer-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 2.91193C15.4121 3.17965 14.7791 3.3607 14.1152 3.4416C14.7932 3.02556 15.3135 2.36588 15.5586 1.58004C14.9238 1.96525 14.2222 2.2455 13.4728 2.39573C12.8755 1.74183 12.0218 1.3335 11.0771 1.3335C9.26548 1.3335 7.79574 2.84066 7.79574 4.69933C7.79574 4.9632 7.82391 5.21938 7.88026 5.46592C5.15208 5.32531 2.73381 3.98668 1.11381 1.94792C0.831132 2.44677 0.669596 3.02556 0.669596 3.64191C0.669596 4.80912 1.24905 5.83958 2.12995 6.4434C1.59277 6.42703 1.08563 6.27391 0.642365 6.02352V6.06493C0.642365 7.69632 1.77402 9.0571 3.27663 9.36527C3.00147 9.44424 2.71128 9.48373 2.41169 9.48373C2.20039 9.48373 1.99378 9.46351 1.79374 9.42402C2.21166 10.7607 3.42313 11.7344 4.86001 11.7604C3.7368 12.6637 2.32059 13.202 0.783234 13.202C0.518398 13.202 0.256383 13.1866 0 13.1558C1.45284 14.1092 3.17896 14.6668 5.03187 14.6668C11.0705 14.6668 14.3715 9.53862 14.3715 5.09033C14.3715 4.94394 14.3687 4.79756 14.3631 4.65407C15.0045 4.17929 15.5614 3.58702 16 2.91193Z" fill="white"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8.84757 3.81794C8.84757 3.98169 8.84757 4.51541 8.84757 5.27366H11.4546L11.1719 7.59763H8.84757C8.84757 11.1816 8.84757 15.9843 8.84757 15.9843H5.76238C5.76238 15.9843 5.76238 11.2452 5.76238 7.59763H4.15479V5.27366H5.76238C5.76238 4.35204 5.76238 3.69669 5.76238 3.51422C5.76238 2.64485 5.69688 2.23235 6.06629 1.55866C6.43588 0.885005 7.47838 -0.00543266 9.28147 0.0160048C11.085 0.0382236 11.8452 0.211724 11.8452 0.211724L11.4546 2.6885C11.4546 2.6885 10.3029 2.38441 9.73763 2.49279C9.1731 2.60119 8.84757 2.94894 8.84757 3.81794Z" fill="white"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M11.8836 3.358C11.2243 2.59144 10.8788 1.60104 10.9063 0.592723L8.4425 0.533203C8.4425 0.533203 8.4425 0.638323 8.4425 0.780083V10.6602C8.4769 13.786 3.53834 13.7102 3.92906 10.2551C4.16794 8.88136 5.6441 8.03592 6.95578 8.51384V5.99992C4.1001 5.50264 1.39386 7.7756 1.42234 10.6713C1.67194 16.9513 10.6793 16.9521 10.9292 10.6713C10.8663 10.4465 10.9015 6.26152 10.8926 5.90856C12.0129 6.60568 13.3164 6.95416 14.6366 6.90952V4.3132C13.4161 4.3132 12.4847 3.98872 11.8836 3.358Z" fill="white"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_47_76)">
+                <path d="M8.00001 14.6666C6.57052 14.6666 5.54183 14.6659 4.73981 14.5881C3.94698 14.5112 3.43981 14.3636 3.03506 14.1092C2.57246 13.8186 2.18129 13.4274 1.89062 12.9649C1.63637 12.5601 1.4886 12.0529 1.41183 11.2601C1.33405 10.4581 1.33334 9.42941 1.33334 7.99992C1.33334 6.57042 1.33405 5.54174 1.41183 4.73972C1.4886 3.94689 1.63637 3.43972 1.89062 3.03497C2.18128 2.57236 2.57245 2.18119 3.03506 1.89052C3.43981 1.63628 3.94698 1.4885 4.73981 1.41174C5.54173 1.33396 6.57041 1.33325 8.00001 1.33325C9.42951 1.33325 10.4582 1.33396 11.2602 1.41174C12.053 1.4885 12.5602 1.63628 12.965 1.89052C13.4275 2.1812 13.8187 2.57237 14.1093 3.03497C14.3636 3.43972 14.5113 3.94689 14.5882 4.73972C14.666 5.54174 14.6667 6.57042 14.6667 7.99992C14.6667 9.42941 14.666 10.4581 14.5882 11.2601C14.5113 12.0529 14.3636 12.5601 14.1093 12.9649C13.8187 13.4274 13.4275 13.8186 12.965 14.1092C12.5602 14.3636 12.053 14.5112 11.2602 14.5881C10.4582 14.6659 9.42951 14.6666 8.00001 14.6666Z" fill="white" stroke="white" stroke-width="2"/>
+                <path d="M8.00001 11.3333C9.47277 11.3333 10.6667 10.1394 10.6667 8.66667C10.6667 7.19391 9.47277 6 8.00001 6C6.52725 6 5.33334 7.19391 5.33334 8.66667C5.33334 10.1394 6.52725 11.3333 8.00001 11.3333Z" fill="white" stroke="black" stroke-width="2"/>
+                <path d="M11.25 5.5C11.6642 5.5 12 5.16421 12 4.75C12 4.33579 11.6642 4 11.25 4C10.8358 4 10.5 4.33579 10.5 4.75C10.5 5.16421 10.8358 5.5 11.25 5.5Z" fill="black"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_47_76">
+                <rect width="16" height="16" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+</footer>
+
+</body>
+</html>

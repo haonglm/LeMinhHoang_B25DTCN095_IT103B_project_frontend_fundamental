@@ -12,13 +12,11 @@ body {
     align-items: center;
 }
 
-/* Container */
 .container {
     width: 100%;
     max-width: 500px;
 }
 
-/* Form box */
 .form-box {
     background: #FFFFFF;
     padding: 30px 35px;
@@ -37,7 +35,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Row 2 cột */
 .row {
     display: flex;
     gap: 15px;
@@ -73,7 +70,6 @@ h2 {
     border-color: #2563eb;
 }
 
-/* Checkbox */
 .checkbox {
     display: flex;
     align-items: center;
@@ -95,7 +91,6 @@ h2 {
     font-weight: bold;
 }
 
-/* Button */
 button {
     width: 100%;
     padding: 12px;
@@ -111,7 +106,6 @@ button:hover {
     background: #1e40af;
 }
 
-/* Login text */
 .login-text {
     margin-top: 15px;
     font-size: 14px;
