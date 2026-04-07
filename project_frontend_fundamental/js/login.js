@@ -78,5 +78,5 @@ document.querySelector("form").addEventListener("submit", function(e){
         sessionStorage.setItem("currentUser", JSON.stringify(user));
     }
 
-    window.location.href = "./dashboard.html";
+    window.location.href = "./subject-manager.html";
 })
