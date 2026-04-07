@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Tracker</title>
+    <script src = "../js/checkLogin.js"></script>
     <link rel="stylesheet" href="../css/subject-manager.css">
 </head>
 <body>
@@ -21,8 +22,13 @@
 
         <ul class="menu">
             <li><span class="sidebar-icon"><img src="../assets/icons/Trending up.png" alt="logo"></span> Thống kê</li>
-            <li><span class="sidebar-icon"><img src="../assets/icons/Notebook.png" alt="logo"></span>Quản lý môn học</a></li>
-            <li><span class="sidebar-icon"><img src="../assets/icons/Document duplicate.png" alt="logo"></span><a href="category-manager.html">Quản lý bài học</a></li>
+            <li class="active"><span class="sidebar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M8 4H7.2002C6.08009 4 5.51962 4 5.0918 4.21799C4.71547 4.40973 4.40973 4.71547 4.21799 5.0918C4 5.51962 4 6.08009 4 7.2002V16.8002C4 17.9203 4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H8M8 4H16.8002C17.9203 4 18.4796 4 18.9074 4.21799C19.2837 4.40973 19.5905 4.71547 19.7822 5.0918C20 5.5192 20 6.07899 20 7.19691V16.8036C20 17.9215 20 18.4805 19.7822 18.9079C19.5905 19.2842 19.2837 19.5905 18.9074 19.7822C18.48 20 17.921 20 16.8031 20H8M8 4V20M12 11H16M12 8H16" stroke="#0E73F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg></span>Quản lý môn học</li>
+            <li ><span class="sidebar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M9.58579 4.58579C9.96086 4.21071 10.4696 4 11 4H14.586C15.1164 4.00011 15.625 4.2109 16 4.586L18.414 7C18.7891 7.37499 18.9999 7.88361 19 8.414V14C19 14.5304 18.7893 15.0391 18.4142 15.4142C18.0391 15.7893 17.5304 16 17 16H11C10.4696 16 9.96086 15.7893 9.58579 15.4142C9.21071 15.0391 9 14.5304 9 14V6C9 5.46957 9.21071 4.96086 9.58579 4.58579Z" fill="#84919A"/>
+<path d="M5.58579 8.58579C5.21071 8.96086 5 9.46957 5 10V18C5 18.5304 5.21071 19.0391 5.58579 19.4142C5.96086 19.7893 6.46957 20 7 20H13C13.5304 20 14.0391 19.7893 14.4142 19.4142C14.7893 19.0391 15 18.5304 15 18H7V8C6.46957 8 5.96086 8.21071 5.58579 8.58579Z" fill="#84919A"/>
+</svg></span><a href="category-manager.html">Quản lý bài học</a></li>
         </ul>
     </aside>
 
@@ -36,7 +42,16 @@
                 <div class="icon"><img src="../assets/icons/Bell.png" alt="logo"></div>
                 <div class="icon"><img src="../assets/icons/Question mark circle.png" alt="logo"></div>
                 <div class="icon"><img src="../assets/icons/Cog settings.png" alt="logo"></div>
-                <div class="avatar"><img src="../assets/icons/Avatar w. photo.png" alt="logo"></div>
+                <div class="avatar" id = "user">
+                    <img src="../assets/icons/Avatar w. photo.png" alt="logo">
+                    <div class="user-infor" id="user-infor">
+                        <div class="user-box">
+                            <p id="user-name">Lê Minh Hoàng</p>
+                            <p id="user-email">hoangvergo111@gmail.com</p>
+                            <button onclick="logOut()">Đăng xuất</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -45,25 +60,33 @@
                 <h2>Môn học</h2>
 
                 <div class="actions">
-                    <select>
-                        <option>Lọc theo trạng thái</option>
+                    <select id="filterStatus">
+                        <option value="">Lọc theo trạng thái</option>
+                        <option value = "active">Đang hoạt động</option>
+                        <option value = "stop">ngừng hoạt động</option>
                     </select>
-                    <button>Thêm mới môn học</button>
+                    <button id="btnOpenModal">Thêm mới môn học</button>
                 </div>
             </div>
 
             <div class="search">
-                <input type="text" class="input-icon" placeholder="Tìm kiếm môn học theo tên...">
+                <input id="searchInput" type="text" class="input-icon" placeholder="Tìm kiếm môn học theo tên...">
             </div>
 
             <div class="table">
                 <div class="table-head">
-                    <div>Tên môn học</div>
+                    <div id = "sortName" style = "cursor: pointer;">Tên môn học
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8.00016 3.33337V12.6667M8.00016 12.6667L12.6668 8.00004M8.00016 12.6667L3.3335 8.00004" stroke="#667085" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>   
                     <div>Trạng thái</div>
                     <div>Chức năng</div>
                 </div>
 
-                <div class="row">
+                <div id="subject-list"></div>
+
+                <!-- <div class="row">
                     <div>Lập trình C</div>
                     <div><span class="status active">● Đang hoạt động</span></div>
                     <div class="actions-icon">
@@ -88,14 +111,10 @@
                         <span class="icon"><img src="../assets/icons/Button.png" alt="logo"></span>
                         <span class="icon"><img src="../assets/icons/_Button base.png" alt="logo"></span>
                     </div>
-                </div>
+                </div> -->
 
             <div class="pagination">
-                <button>&lt;</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
+
             </div>
         </div>
     </main>
@@ -103,7 +122,7 @@
 </div>
 
 <!-- popup -->
-<div class="modal-overlay">
+<div class="modal-overlay" id="modalAdd">
     <div class="modal-box">
         <div class="popup-header">
             <h3>thêm mới môn học</h3>
@@ -115,28 +134,63 @@
 
         <form class="popup-input">
             <p>tên môn học</p>
-            <input type="text">
-            <span class="err-msg" style="display: none; color: red;">tên môn học không được để trống</span>
+            <input  id="inputSubject" type="text">
+            <span class="err-msg" id="errorSubject" style="display: none; color: red;">tên môn học không được để trống</span>
         </form>
 
         <p>trạng thái</p>
         <div class="popup-checkbox">
             <label>
-                <input type="checkbox" name="status" value="active" class="check">đang hoạt động
+                <input type="checkbox" name="status" value="active" class="check" id="statusActive">đang hoạt động
             </label>
             <label>
-                <input type="checkbox" name="status" value="stop" class="check">ngừng hoạt động
+                <input type="checkbox" name="status" value="stop" class="check" id="statusStop">ngừng hoạt động
             </label>
         </div>
 
         <div class="popup-footer">
-            <button class="popup-button-cancel">hủy</button>
-            <button class="popup-button-add">thêm</button>
+            <button id="btnCancelAdd" class="popup-button-cancel">hủy</button>
+            <button type = "button" id="btnAdd" class="popup-button-add">thêm</button>
         </div>
     </div>
 </div>
 
-<div class="modal-overlay-delete">
+<!-- popup cập nhật -->
+ <div class="modal-overlay" id="modalUpdate">
+    <div class="modal-box">
+        <div class="popup-header">
+            <h3>cập nhật môn học</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none">
+                <path d="M17.6564 16.6568L6.3427 5.34309" stroke="black" stroke-linecap="round"/>
+                <path d="M17.6573 5.34309L6.34359 16.6568" stroke="black" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <form class="popup-input">
+            <p>tên môn học</p>
+            <input  id="updateSubject" type="text">
+            <span class="err-msg" id= "errorUpdate" style="display: none; color: red;">tên môn học không được để trống</span>
+        </form>
+
+        <p>trạng thái</p>
+        <div class="popup-checkbox">
+            <label>
+                <input type="checkbox" name="status" value="active" class="check" id="updateActive">đang hoạt động
+            </label>
+            <label>
+                <input type="checkbox" name="status" value="stop" class="check" id="updateStop">ngừng hoạt động
+            </label>
+        </div>
+
+        <div class="popup-footer">
+            <button id="btnCancelUpdate" class="popup-button-cancel">hủy</button>
+            <button type = "button" id="btnUpdate" class="popup-button-add">lưu</button>
+        </div>
+    </div>
+</div>
+
+<!-- popup xóa môn -->
+<div class="modal-overlay-delete" id="modalDelete">
     <div class="modal-box-delete">
         <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
             <rect x="4" y="4" width="48" height="48" rx="24" fill="#FEE4E2"/>
@@ -144,14 +198,31 @@
             <path d="M28 24V28M28 32H28.01M38 28C38 33.5228 33.5228 38 28 38C22.4772 38 18 33.5228 18 28C18 22.4772 22.4772 18 28 18C33.5228 18 38 22.4772 38 28Z" stroke="#D92D20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <h3>Xác nhận</h3>
-        <p>Bạn có chắc chắn muốn xóa môn học <b>Lập trình cơ bản Frontend Fundamental</b> khỏi hệ thống không?</p>
+        <p id= "confirmText">Bạn có chắc chắn muốn xóa môn học <b>Lập trình cơ bản Frontend Fundamental</b> khỏi hệ thống không?</p>
         <hr class="divider-delete">
         <div class="popup-footer">
-            <button class="popup-button-cancel">hủy</button>
-            <button class="popup-button-delete">xóa</button>
+            <button class="popup-button-cancel" id="btnCancelDelete">hủy</button>
+            <button class="popup-button-delete" id="btnConfirmDelete">xóa</button>
         </div>
     </div>
 </div>
 
+<!-- popup xác nhận đăng xuất -->
+<div class="modal-overlay-delete" id="modalLogout">
+    <div class="modal-box-delete">
+        <h3>Xác nhận</h3>
+        <p>Bạn có chắc muốn đăng xuất không?</p>
+        <hr class="divider-delete">
+        <div class="popup-footer">
+            <button class="popup-button-cancel" id="btnCancelLogout">Hủy</button>
+            <button class="popup-button-delete" id="btnConfirmLogout">Đăng xuất</button>
+        </div>
+    </div>
+</div>
+
+<!-- toast msg -->
+<div id="toastBox"></div>
+
+    <script src="../js/subject-manager.js"></script>
 </body>
 </html>

@@ -1,34 +1,22 @@
-let user = JSON.parse(localStorage.getItem("user")) || [];
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
 const middleNameInput = document.getElementById("middleName");
 const lastNameInput = document.getElementById("lastName");
 const emailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
-const agreeInput = document.getElementById("agree").checked;
+const agreeInput = document.getElementById("agree");
+
 
 const middleNameError = document.getElementById("middleNameError");
 const lastNameError = document.getElementById("lastNameError");
 const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
+const agreeError = document.getElementById("agreeError");
 
-function resetInput(){
-    middleNameInput.value = "";
-    lastNameInput.value = "";
-    emailInput.value = "";
-    passwordInput.value = "";
-    agree.checked = false;
-}
 
-function clearError(){
-    middleNameError.innerText = "";
-    lastNameError.innerText = "";
-    emailError.innerText = "";
-    passwordError.innerText = "";
-}
 
 function validate(){
     let isValid = true;
-    clearError();
 
     const middleNameElement = middleNameInput.value.trim();
     const lastNameElement = lastNameInput.value.trim();
@@ -82,11 +70,72 @@ function validate(){
 
     // checkbox
     if(!agreeInput.checked){
-        alert("bạn phải đồng ý các điều khoản");
         isValid = false;
+        agreeError.innerText = "vui lòng đồng ý các chính sách";
+        agreeError.style.color = "red";
     }
 
-    return isValid;
+    if(!isValid){
+        return;
+    }
+
+    return {
+        middleNameElement,
+        lastNameElement,
+        emailElement,
+        passwordElement
+    }
 }
 
+middleNameInput.addEventListener("input", function(){
+    middleNameInput.style.border = "1px solid #ccc";
+    middleNameError.innerText = "";
+});
+
+lastNameInput.addEventListener("input", function(){
+    lastNameInput.style.border = "1px solid #ccc";
+    lastNameError.innerText = "";
+});
+
+emailInput.addEventListener("input", function(){
+    emailInput.style.border = "1px solid #ccc";
+    emailError.innerText = "";
+});
+
+passwordInput.addEventListener("input", function(){
+    passwordInput.style.border = "1px solid #ccc";
+    passwordError.innerText = "";
+});
+
+agreeInput.addEventListener("change", function(){
+    agreeError.innerText = "";
+});
+
 // submit
+document.querySelector("form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    if(!validate()){
+        return;
+    }
+
+    const email = emailInput.value.trim();
+    const isExist = users.find(u => u.email === email);
+
+    if(isExist){
+        emailInput.style.border = "1px solid red";
+        emailError.innerText = "email đã tồn tại";
+        emailError.style.color = "red";
+        return;
+    }
+
+    const user = {
+        fullName: `${middleNameInput.value.trim()} ${lastNameInput.value.trim()}`,
+        email: email,
+        password: passwordInput.value
+    }
+
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+    window.location.href = "./index.html";
+})

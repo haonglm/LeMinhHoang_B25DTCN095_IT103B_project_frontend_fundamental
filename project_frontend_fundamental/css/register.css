@@ -43,6 +43,8 @@ h2 {
 .input-group {
     width: 100%;
     text-align: left;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
 }
 
@@ -74,7 +76,7 @@ h2 {
     display: flex;
     align-items: center;
     font-size: 13px;
-    margin: 10px 0 15px;
+    margin: 10px 0 10px;
 }
 
 .checkbox input {
@@ -90,6 +92,8 @@ h2 {
     text-decoration: none;
     font-weight: bold;
 }
+
+
 
 button {
     width: 100%;

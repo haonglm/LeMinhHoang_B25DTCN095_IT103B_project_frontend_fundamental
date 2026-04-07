@@ -15,12 +15,14 @@
         <form>
             <div class="input-group">
                 <label>Email</label>
-                <input type="email">
+                <input type="email" id = "emailInput">
+                <div class="error-message" id = "emailError"></div>
             </div>
 
             <div class="input-group">
                 <label>Mật khẩu</label>
-                <input type="password">
+                <input type="password" id = "passwordInput">
+                <div class="error-message" id = "passwordError"></div>
             </div>
 
             <div class="row-between">
@@ -40,5 +42,7 @@
         </form>
     </div>
 </div>
+
+    <script src="../js/login.js"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@
 
             <div class="input-group">
                 <label>Email</label>
-                <input type="email" placeholder="you@company.com" class="input" id="emailInput">
+                <input type="text" placeholder="you@company.com" class="input" id="emailInput">
                 <div class="error-message" id="emailError"></div>
             </div>
 
@@ -38,14 +38,17 @@
                 <div class="error-message" id="passwordError"></div>
             </div>
 
-            <div class="checkbox">
-                <input type="checkbox" id="agree" class="checkbox-input">
-                <label for="agree">
-                    Bạn đồng ý với <a href="#">chính sách và điều khoản</a>
-                </label>
+            <div class="input-group">
+                <div class="checkbox">
+                    <input type="checkbox" id="agree" class="checkbox-input">
+                    <label for="agree">
+                        Bạn đồng ý với <a href="#">chính sách và điều khoản</a>
+                    </label>
+                </div>
+                <div class="error-message" id="agreeError"></div>
             </div>
 
-            <button type="submit">Đăng ký</button>
+            <button type="submit" >Đăng ký</button>
 
             <p class="login-text">
                 Bạn đã có tài khoản? <a href="./index.html">Đăng nhập</a>
@@ -54,5 +57,6 @@
     </div>
 </div>
 
+    <script src="../js/register.js"></script>
 </body>
 </html>
