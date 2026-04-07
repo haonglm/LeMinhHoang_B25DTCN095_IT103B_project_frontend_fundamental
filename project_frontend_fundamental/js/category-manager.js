@@ -58,7 +58,7 @@ function renderLessons() {
         row.classList.add("row");
 
         row.innerHTML = `
-            <div><input type="checkbox"></div>
+            <div><input type="checkbox" class="status-checkbox" data-id="${lesson.id}" ${lesson.status === "active" ? "checked" : ""}></div>
             <div>${lesson.lesson_name}</div>
             <div>${lesson.time}</div>
             <div>
@@ -345,6 +345,25 @@ btnUpdate.onclick = () => {
 
     modalUpdate.classList.remove("show");
 }
+
+//tick đổi trạng thái
+document.addEventListener("change", function (e){
+    if(e.target.classList.contains("status-checkbox")){
+        let id = Number(e.target.dataset.id);
+
+        let lesson = lessons.find(l => l.id === id);
+
+        //đổi trạng thái
+        if(e.target.checked){
+            lesson.status = "active";
+        }else{
+            lesson.status = "stop";
+        }
+
+        saveLessons();
+        renderLessons();
+    }
+})
 
 renderSubjectOptions();
 renderLessons();
