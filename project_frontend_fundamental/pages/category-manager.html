@@ -60,8 +60,8 @@
                 <h2>Bài học</h2>
 
                 <div class="actions">
-                    <select>
-                        <option>Lọc theo môn học</option>
+                    <select id="filterSubject">
+                        <option value="">Lọc theo môn học</option>
                     </select>
                     <button id = "btnOpenModal">Thêm mới bài học</button>
                 </div>
@@ -70,8 +70,14 @@
             <div class="table">
                 <div class="table-head">
                     <div><input type="checkbox"></div>
-                    <div>Tên bài học</div>
-                    <div>Thời gian học</div>
+                    <div class="sortable" data-type="name" style = "cursor: pointer;">Tên bài học
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8.00016 3.33337V12.6667M8.00016 12.6667L12.6668 8.00004M8.00016 12.6667L3.3335 8.00004" stroke="#667085" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></div>
+                    <div class="sortable" data-type="time" style = "cursor: pointer;">Thời gian học
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8.00016 3.33337V12.6667M8.00016 12.6667L12.6668 8.00004M8.00016 12.6667L3.3335 8.00004" stroke="#667085" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg></div>
                     <div>Trạng thái</div>
                     <div>Chức năng</div>
                 </div>
@@ -114,11 +120,7 @@
             </div>
 
             <div class="pagination">
-                <button>&lt;</button>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
+                <!-- phân trang -->
             </div>
         </div>
     </main>
@@ -238,6 +240,9 @@
         </div>
     </div>
 </div>
+
+<!-- toast msg -->
+<div id="toastBox"></div>
 
     <script src="../js/category-manager.js"></script>
 </body>

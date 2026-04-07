@@ -191,6 +191,7 @@ a:hover{
     background: #fff;
     border-radius: 8px;
     overflow: hidden;
+    min-height: 300px;
 }
 
 .table-head,
@@ -215,6 +216,12 @@ a:hover{
 .table-head {
     background: #f9fafb;
     font-weight: bold;
+}
+
+.table-head div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .row:hover {
@@ -467,4 +474,52 @@ pop-up-overlay,
     font-size: 17px;
     color: white;
     background-color: #D92D20;
+}
+
+/* toast */
+#toastBox {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.toast {
+    width: 450px;
+    border-radius: 18px;
+    background-color: #333e5a;
+    padding: 16px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.toastHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.toast-left {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.toast-left p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.toast-right button {
+    border: none;
+    background-color: #333e5a;
+}
+
+.toast-content p {
+    font-size: 14px;
+    margin-left: 32px;
+}
+
+.hidden {
+    display: none;
 }

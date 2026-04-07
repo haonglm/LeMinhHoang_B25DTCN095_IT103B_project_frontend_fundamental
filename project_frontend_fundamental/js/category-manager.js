@@ -3,6 +3,11 @@ let lessons = JSON.parse(localStorage.getItem("lessons")) || [
     {id: 1, lesson_name: "Session 01 - tổng quan HTML", subject: "HTML cơ bản", time: 45, status: "active"}
 ]
 
+let filterValue = "";
+let sortType = "";
+let currentPage = 1;
+let pageSize = 5;
+
 //hàm lưu dữ liệu
 function saveLessons() {
     localStorage.setItem("lessons", JSON.stringify(lessons));
@@ -46,14 +51,19 @@ btnConfirmLogout.onclick = () => {
 const lessonList = document.getElementById("lesson-list");
 
 function renderLessons() {
+    let data = getProcessedLessons();
     lessonList.innerHTML = "";
 
-    if (lessons.length === 0) {
+    if (data.length === 0) {
         lessonList.innerHTML = `<div class="empty">không có bài học</div>`;
         return;
     }
 
-    lessons.forEach(lesson => {
+    let start = (currentPage - 1) * pageSize;
+    let end = start + pageSize;
+    let paginatedData = data.slice(start, end);
+
+    paginatedData.forEach(lesson => {
         const row = document.createElement("div");
         row.classList.add("row");
 
@@ -76,6 +86,36 @@ function renderLessons() {
 
         lessonList.appendChild(row);
     });
+
+    renderPagination(data);
+}
+
+function getProcessedLessons() {
+    let result = [...lessons];
+
+    // filter
+    if (filterValue !== "") {
+        result = result.filter(l => l.subject === filterValue);
+    }
+
+    // sort
+    if (sortType === "name") {
+        result.sort((a, b) => {
+            return sortState.name === "asc"
+                ? a.lesson_name.localeCompare(b.lesson_name)
+                : b.lesson_name.localeCompare(a.lesson_name);
+        });
+    }
+
+    if (sortType === "time") {
+        result.sort((a, b) => {
+            return sortState.time === "asc"
+                ? a.time - b.time
+                : b.time - a.time;
+        });
+    }
+
+    return result;
 }
 
 //hàm render option thêm
@@ -108,6 +148,21 @@ function renderSubjectOptionsUpdate(selectedValue) {
         }
 
         updateLessonSubject.appendChild(option);
+    });
+}
+
+//hàm render option lọc theo môn
+function renderFilterOptions() {
+    const filterSubject = document.getElementById("filterSubject");
+
+    filterSubject.innerHTML = `<option value="">Lọc theo môn học</option>`;
+
+    subjects.forEach(subject => {
+        let option = document.createElement("option");
+        option.value = subject.subject_name;
+        option.innerText = subject.subject_name;
+
+        filterSubject.appendChild(option);
     });
 }
 
@@ -195,11 +250,12 @@ btnAdd.onclick = function () {
     };
 
     lessons.push(newLesson);
-
+    currentPage = 1;
     saveLessons();
     renderLessons();
 
     modalAdd.classList.remove("show");
+    showToast("thêm bài học thành công");
 
     // reset
     lessonName.value = "";
@@ -344,6 +400,7 @@ btnUpdate.onclick = () => {
     renderLessons();
 
     modalUpdate.classList.remove("show");
+    showToast("cập nhật bài học thành công");
 }
 
 //tick đổi trạng thái
@@ -365,5 +422,137 @@ document.addEventListener("change", function (e){
     }
 })
 
+//sắp xếp theo tên và thời gian học
+let sortState = {
+    name: "asc",
+    time: "asc"
+}
+
+let sort = "";
+
+function sortLessons(type) {
+    sortType = type;
+
+    if(type === "name"){
+        sortState.name = sortState.name === "asc" ? "desc" : "asc";
+    }
+
+    if(type === "time"){
+        sortState.time = sortState.time === "asc" ? "desc" : "asc";
+    }
+
+    currentPage = 1;
+    renderLessons();
+}
+
+document.querySelectorAll(".sortable").forEach(el =>{
+    el.addEventListener("click", function(){
+        let type = this.dataset.type;
+        sortLessons(type);
+    })
+})
+
+//lọc bài học theo môn
+const filterSubject = document.getElementById("filterSubject");
+    filterSubject.addEventListener("change", function(){
+        filterValue = filterSubject.value;
+        currentPage = 1; // reset trang
+        renderLessons();
+    })
+
+//phân trang
+function renderPagination(data) {
+    const pagination = document.querySelector(".pagination");
+    pagination.innerHTML = "";
+
+    let totalPages = Math.ceil(data.length / pageSize);
+
+    // prev
+    let prevBtn = document.createElement("button");
+    prevBtn.innerHTML = "<";
+    prevBtn.disabled = currentPage === 1;
+
+    prevBtn.onclick = () => {
+        currentPage--;
+        renderLessons();
+    };
+
+    pagination.appendChild(prevBtn);
+
+    // số trang
+    for (let i = 1; i <= totalPages; i++) {
+        let btn = document.createElement("button");
+        btn.innerText = i;
+
+        if (i === currentPage) {
+            btn.style.background = "#333";
+            btn.style.color = "#fff";
+        }
+
+        btn.onclick = () => {
+            currentPage = i;
+            renderLessons();
+        };
+
+        pagination.appendChild(btn);
+    }
+
+    // next
+    let nextBtn = document.createElement("button");
+    nextBtn.innerHTML = ">";
+    nextBtn.disabled = currentPage === totalPages;
+
+    nextBtn.onclick = () => {
+        currentPage++;
+        renderLessons();
+    };
+
+    pagination.appendChild(nextBtn);
+}
+
+//toast msg
+const toastBox = document.getElementById("toastBox");
+function showToast(msg) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+            <div class="toastHeader">
+                    <div class="toast-left">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12ZM10 14.17L16.59 7.58L18 9L10 17L6 13L7.41 11.59L10 14.17Z"
+                                fill="#02EE6A" />
+                        </svg>
+                        <p>Thành công</p>
+                    </div>
+                    <div class="toast-right">
+                        <button class = "close-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <rect width="24" height="24" rx="12" fill="white" fill-opacity="0.35" />
+                                <path
+                                    d="M16.6666 8.27337L15.7266 7.33337L11.9999 11.06L8.27325 7.33337L7.33325 8.27337L11.0599 12L7.33325 15.7267L8.27325 16.6667L11.9999 12.94L15.7266 16.6667L16.6666 15.7267L12.9399 12L16.6666 8.27337Z"
+                                    fill="white" />
+                            </svg></button>
+                    </div>
+                </div>
+
+                <div class="toast-content">
+                    <p id="text-toast">${msg}</p>
+                </div>
+        `;
+
+    toastBox.appendChild(toast);
+
+    const closeBtn = toast.querySelector('.close-btn');
+    closeBtn.addEventListener('click', () => {
+        toast.remove();
+    });
+
+    setTimeout(() => {
+        toast.remove();
+    }, 2500);
+}
+
 renderSubjectOptions();
+renderFilterOptions();
 renderLessons();
