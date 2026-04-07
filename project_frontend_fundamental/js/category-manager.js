@@ -78,7 +78,7 @@ function renderLessons() {
     });
 }
 
-//hàm render option
+//hàm render option thêm
 function renderSubjectOptions() {
     const lessonSubject = document.getElementById("lessonSubject");
 
@@ -90,6 +90,24 @@ function renderSubjectOptions() {
         option.innerText = subject.subject_name;
 
         lessonSubject.appendChild(option);
+    });
+}
+
+//hàm render option cập nhật
+function renderSubjectOptionsUpdate(selectedValue) {
+    updateLessonSubject.innerHTML = `<option value="">Chọn môn học</option>`;
+
+    subjects.forEach(subject => {
+        let option = document.createElement("option");
+        option.value = subject.subject_name;
+        option.innerText = subject.subject_name;
+
+        // chọn sẵn
+        if (subject.subject_name === selectedValue) {
+            option.selected = true;
+        }
+
+        updateLessonSubject.appendChild(option);
     });
 }
 
@@ -220,6 +238,113 @@ btnConfirmDelete.onclick = () => {
     modalDelete.classList.remove("show");
 };
 
+//chức năng sửa và cập nhật
+const modalUpdate = document.getElementById("modalUpdate");
+
+const updateLessonName = document.getElementById("updateLessonName");
+const updateLessonSubject = document.getElementById("updateLessonSubject");
+const updateLessonTime = document.getElementById("updateLessonTime");
+
+const errorUpdateName = document.getElementById("errorUpdateName");
+const errorUpdateSubject = document.getElementById("errorUpdateSubject");
+const errorUpdateTime = document.getElementById("errorUpdateTime");
+
+const btnUpdate = document.getElementById("btnUpdate");
+const btnCancelUpdate = document.getElementById("btnCancelUpdate");
+
+let idUpdate = null;
+
+document.addEventListener("click", function (e){
+    if(e.target.closest(".edit-btn")){
+        idUpdate = Number(e.target.closest(".edit-btn").dataset.id);
+
+        let lesson = lessons.find(l => l.id === idUpdate);
+
+        //fill dữ liệu
+        updateLessonName.value = lesson.lesson_name;
+        updateLessonTime.value = lesson.time;
+        updateLessonSubject.value = lesson.subject;
+
+        //reset lỗi
+        errorUpdateName.style.display = "none";
+        errorUpdateSubject.style.display = "none";
+        errorUpdateTime.style.display = "none";
+
+        updateLessonName.style.border = "1px solid #ccc";
+        updateLessonSubject.style.border = "1px solid #ccc";
+        updateLessonTime.style.border = "1px solid #ccc";
+
+        renderSubjectOptionsUpdate(lesson.subject);
+        modalUpdate.classList.add("show");
+    }
+});
+
+btnCancelUpdate.onclick = () => {
+    modalUpdate.classList.remove("show");
+}
+
+btnUpdate.onclick = () => {
+    let name = updateLessonName.value.trim();
+    let subject = updateLessonSubject.value;
+    let time = Number(updateLessonTime.value);
+
+    let isValid = true;
+
+    //reset lỗi
+    errorUpdateName.style.display = "none";
+    errorUpdateSubject.style.display = "none";
+    errorUpdateTime.style.display = "none";
+
+    updateLessonName.style.border = "1px solid #ccc";
+    updateLessonSubject.style.border = "1px solid #ccc";
+    updateLessonTime.style.border = "1px solid #ccc";
+
+    //validate
+    if(name === ""){
+        errorUpdateName.innerText = "Tên bài học không được để trống";
+        errorUpdateName.style.display = "block";
+        updateLessonName.style.border = "1px solid red";
+        isValid = false;
+    }
+
+    let isExist = lessons.some(l => l.lesson_name.toLowerCase() === name.toLowerCase() && l.id != idUpdate);
+
+    if(isExist){
+        errorUpdateName.innerText = "tên bài học đã tồn tại";
+        errorUpdateName.style.display = "block";
+        updateLessonName.style.border = "1px solid red";
+        isValid = false;
+    }
+
+    if(subject === ""){
+        errorUpdateSubject.innerText = "Vui lòng chọn môn học";
+        errorUpdateSubject.style.display = "block";
+        updateLessonSubject.style.border = "1px solid red";
+        isValid = false;
+    }
+
+    if (time <= 0) {
+        errorUpdateTime.innerText = "Thời gian phải lớn hơn 0";
+        errorUpdateTime.style.display = "block";
+        updateLessonTime.style.border = "1px solid red";
+        isValid = false;
+    }
+
+    if(!isValid){
+        return;
+    }
+
+    let index = lessons.findIndex(l => l.id === idUpdate);
+
+    lessons[index].lesson_name = name;
+    lessons[index].subject = subject;
+    lessons[index].time = time;
+
+    saveLessons();
+    renderLessons();
+
+    modalUpdate.classList.remove("show");
+}
 
 renderSubjectOptions();
 renderLessons();

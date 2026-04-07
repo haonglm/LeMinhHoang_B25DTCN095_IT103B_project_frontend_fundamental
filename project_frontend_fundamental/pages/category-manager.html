@@ -126,6 +126,8 @@
 </div>
 
 <!-- popup -->
+
+<!-- popup thêm -->
 <div class="modal-overlay" id="modalAdd">
     <div class="modal-box">
         <div class="popup-header">
@@ -161,6 +163,46 @@
         <div class="popup-footer">
             <button class="popup-button-cancel" id="btnCancelAdd">hủy</button>
             <button class="popup-button-add" id="btnAdd">thêm</button>
+        </div>
+    </div>
+</div>
+
+<!-- popup cập nhật -->
+ <div class="modal-overlay" id="modalUpdate">
+    <div class="modal-box">
+        <div class="popup-header">
+            <h3>thêm mới bài học</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="23" viewBox="0 0 24 23" fill="none">
+                <path d="M17.6564 16.6568L6.3427 5.34309" stroke="black" stroke-linecap="round"/>
+                <path d="M17.6573 5.34309L6.34359 16.6568" stroke="black" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <form class="popup-input">
+            <p>tên bài học</p>
+            <input id="updateLessonName" type="text" placeholder="session 10 - cấu trúc điều khiển">
+            <span class="err-msg" id="errorUpdateName" style="display: none; color: red;">tên bài học không được để trống</span>
+        </form>
+
+        <form class="popup-input">
+            <p>loại môn học</p>
+            <select class="popup-option" id="updateLessonSubject">
+                <!-- danh sách môn -->
+            </select>
+            <span class="err-msg" id="errorUpdateSubject" style="display: none; color: red;">tên bài học không được để trống</span>
+        </form>
+
+        <form class="popup-input">
+            <p>thời gian học</p>
+            <input id="updateLessonTime" type="number" placeholder="45">
+            <span class="err-msg" id="errorUpdateTime" style="display: none; color: red;">tên bài học không được để trống</span>
+        </form>
+
+        <hr class="divider">
+
+        <div class="popup-footer">
+            <button class="popup-button-cancel" id="btnCancelUpdate">hủy</button>
+            <button class="popup-button-add" id="btnUpdate">lưu</button>
         </div>
     </div>
 </div>
